@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render IndecisionApp correctly 1`] = `
+<div>
+  <Connect(Header)
+    subtitle="Put your life in the hands of computer"
+  />
+  <div
+    className="container"
+  >
+    <Connect(Action) />
+    <div
+      className="widget"
+    >
+      <Connect(Options) />
+      <Connect(AddOption) />
+    </div>
+  </div>
+  <Connect(OptionModal) />
+</div>
+`;
