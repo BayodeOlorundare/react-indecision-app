@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import Option from './Option';
+import Option from './components/Option';
 import { startRemoveAll } from '../actions/options';
 
 export const Options = props => (
