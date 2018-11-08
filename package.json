@@ -2,7 +2,7 @@
     "name": "indecision-app",
     "version": "1.0.0",
     "description": "Indecision App",
-    "author": "Shadi Al-tarsha",
+    "author": "Bayode Olorundare",
     "license": "MIT",
     "main": "index.js",
     "scripts": {
