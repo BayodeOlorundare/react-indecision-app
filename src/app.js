@@ -1,23 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import 'normalize.css/normalize.css';
-
-import configureStore from './store/configureStore';
 import AppRouter, { history } from './routes/AppRouter';
-import { login, logout } from './actions/auth';
+import configureStore from './store/configureStore';
 import { startSetOptions } from './actions/options';
-import firebase from './firebase/firebase';
+import { login, logout } from './actions/auth';
+import pickOption from './selectors/pickOption';
+import 'normalize.css/normalize.css';
 import './styles/styles.scss';
+import { firebase } from './firebase/firebase';
+import LoadingPage from './components/LoadingPage';
 
 const store = configureStore();
-let hasRendered = false;
 
 const jsx = (
   <Provider store={store}>
     <AppRouter />
   </Provider>
 );
+
+let hasRendered = false;
 
 const renderApp = () => {
   if (!hasRendered) {
@@ -26,7 +28,9 @@ const renderApp = () => {
   }
 };
 
-firebase.auth().onAuthStateChanged(user => {
+ReactDOM.render(<LoadingPage />, document.getElementById('app'));
+
+firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
     store.dispatch(startSetOptions()).then(() => {
