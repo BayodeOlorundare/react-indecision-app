@@ -1,10 +1,6 @@
 # Indecision App
-Front-end web application helps users to make a decision via computer.
 
-## Resources
-The porject is online at [https://shadi-indecision-app.herokuapp.com/](https://shadi-indecision-app.herokuapp.com/ "Indecision")
-
->Please note that I am using firebase so if this service is not available in your region, you need to use VPN to be able to use the app. 
+```Front-end web application helps users to make a decision via computer.```
 
 ## Technologies
 * HTML5
@@ -20,3 +16,22 @@ The porject is online at [https://shadi-indecision-app.herokuapp.com/](https://s
 * Webpack
 * babel
 * NodeJs
+
+## For Development
+
+```Use the following method```
+
+## Yarn
+
+```
+yarn run dev-server
+```
+Then open [http://127.0.0.1:8080/](http://127.0.0.1:8080/) to see your app.<br>
+
+---------------------------------------
+```
+Access live app below via Heroku.
+```
+[Indecision App](https://bayo-react-course-1-indecision.herokuapp.com/)
+
+> This project is part of my [React Course](https://www.udemy.com/react-2nd-edition/) (by Andrew Mead)
