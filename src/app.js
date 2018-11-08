@@ -8,7 +8,7 @@ import { login, logout } from './actions/auth';
 import pickOption from './selectors/pickOption';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-import firebase  from './firebase/firebase';
+import { firebase } from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
 
 const store = configureStore();
@@ -30,7 +30,7 @@ const renderApp = () => {
 
 ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
     store.dispatch(startSetOptions()).then(() => {
