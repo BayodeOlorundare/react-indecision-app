@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Header from './components/Header';
-import Action from './components/Action';
-import AddOption from './components/AddOption';
-import Options from './components/Options';
-import OptionModal from './components/OptionModal';
+import Header from './Header';
+import Action from './Action';
+import AddOption from './AddOption';
+import Options from './Options';
+import OptionModal from './OptionModal';
 
 const IndecisionApp = () => {
   const subtitle = 'Put your life in the hands of computer';
