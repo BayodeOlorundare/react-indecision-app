@@ -1,19 +1,20 @@
-import React from "react";
+import React from 'react';
+import { connect } from 'react-redux';
+import { startRemoveOption } from '../actions/options';
 
-export const Option = props => {
-  const { value, index } = props;
+export const Option = props => (
+  <div className="option">
+    <p className="option__text">
+      {props.count}. {props.option.text}
+    </p>
+    <button className="button button--link" onClick={() => props.onRemove(props.option.id)}>
+      Remove
+    </button>
+  </div>
+);
 
-  return (
-    <li className="option">
-      <p className="option--text">
-        {index}. {value}
-      </p>
-      <button
-        className="button button--link"
-        onClick={() => props.handleDeleteOption(value)}
-      >
-        remove
-      </button>
-    </li>
-  );
-};
+const mapDispatchToProps = dispatch => ({
+  onRemove: id => dispatch(startRemoveOption(id)),
+});
+
+export default connect(undefined, mapDispatchToProps)(Option);

@@ -1,26 +1,27 @@
-.widget-header {
-    background-color: $darken-color2;
-    color: $off-white;
-    padding: $m-size;
-    font-weight: bold; 
-    display: flex;
-    justify-content: space-between;
+//widget
+.widget{
+    background-color: $light-blue;
+    margin-bottom: $xl-size;
 }
 
-.widget {
+
+.widget__message{
     text-align: center;
-    background-color: $lighten-color2;
+    color: $off-white;
+    border-bottom: .1rem solid lighten($light-blue, 10%);
+    margin: 0;
+    padding: $l-size;
 }
 
-.widget-buttom {
+//widget-header
+.widget-header{
+    background: $blue;
+    color: $off-white;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    padding: $m-size;
-    margin-bottom: $l-size;
+    padding:$m-size;
 }
 
-.widget-message {
-    padding: $l-size;
-    border-bottom: 1.5px solid lighten($lighten-color2 , 5%);
+.widget-header__title{
+    margin: 0;
 }
