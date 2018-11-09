@@ -1,48 +1,41 @@
 import  database  from '../firebase/firebase';
 
-// ADD_OPTION
-
-export const addOption = (option) => ({
+export const addOption = option => ({
   type: 'ADD_OPTION',
   option,
 });
 
-export const startAddOption = (option = {}) => {
-  return (dispatch, getState) => {
-    const uid = getState().auth.uid;
-    const {
-      text = ""
-    } = option;
-    const item = { text };
-    return database.ref(`users/${uid}/options`).push(item).then((ref) => {
-      dispatch(addOption({
-        id: ref.key,
-        ...item
-      }));
+export const startAddOption = option => (dispatch, getState) => {
+  const { auth: { uid } } = getState();
+  return database
+    .ref(`users/${uid}/options`)
+    .push({ text: option })
+    .then(ref => {
+      dispatch(
+        addOption({
+          id: ref.key,
+          text: option,
+        })
+      );
     })
     .catch(e => console.log(e));
-  };
 };
 
-// REMOVE_OPTION
-
-export const removeOption = ({ id } = {}) => ({
+export const removeOption = id => ({
   type: 'REMOVE_OPTION',
   id,
 });
 
-
-export const startRemoveExpense = ({ id } = {}) => {
-  return (dispatch, getState) => {
-    const uid = getState().auth.uid;
-    return database.ref(`users/${uid}/options/${id}`).remove().then(() => {
-      dispatch(removeOption({ id }));
+export const startRemoveOption = id => (dispatch, getState) => {
+  const { auth: { uid } } = getState();
+  return database
+    .ref(`users/${uid}/options/${id}`)
+    .remove()
+    .then(() => {
+      dispatch(removeOption(id));
     })
     .catch(e => console.log(e));
-  };
 };
-
-// REMOVE_OPTION
 
 export const removeAll = () => ({
   type: 'REMOVE_ALL',
