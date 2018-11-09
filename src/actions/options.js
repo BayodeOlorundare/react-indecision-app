@@ -15,7 +15,7 @@ export const startAddOption = (option = {}) => {
     } = option;
     const item = { text };
     return database.ref(`users/${uid}/options`).push(item).then((ref) => {
-      dispatch(addExpense({
+      dispatch(addOption({
         id: ref.key,
         ...item
       }));
@@ -36,7 +36,7 @@ export const startRemoveExpense = ({ id } = {}) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
     return database.ref(`users/${uid}/options/${id}`).remove().then(() => {
-      dispatch(removeExpense({ id }));
+      dispatch(removeOption({ id }));
     })
     .catch(e => console.log(e));
   };
