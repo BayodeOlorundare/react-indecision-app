@@ -1,5 +1,4 @@
 const path = require('path');
-const dotenv = require('dotenv');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -11,48 +10,40 @@ if (process.env.NODE_ENV === 'test') {
   require('dotenv').config({ path: '.env.development' });
 }
 
-module.exports = env => {
-  const CSSExtract = new ExtractTextPlugin('styles.css');
+module.exports = (env) => {
   const isProduction = env === 'production';
-  const mode = isProduction ? 'production' : 'development';
+  const CSSExtract = new ExtractTextPlugin('styles.css');
+
   return {
-    mode,
     entry: ['babel-polyfill', './src/app.js'],
     output: {
       path: path.join(__dirname, 'public', 'dist'),
-      filename: 'bundle.js',
+      filename: 'bundle.js'
     },
     module: {
-      rules: [
-        {
-          loader: 'babel-loader',
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-        },
-        {
-          test: /\.s?css$/,
-          use: CSSExtract.extract({
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  sourceMap: true,
-                },
-              },
-              {
-                loader: 'sass-loader',
-                options: {
-                  sourceMap: true,
-                },
-              },
-            ],
-          }),
-        },
-        {
-          test: /\.(png|jpg|gif)$/,
-          use: ['file-loader'],
-        },
-      ],
+      rules: [{
+        loader: 'babel-loader',
+        test: /\.js$/,
+        exclude: /node_modules/
+      }, {
+        test: /\.s?css$/,
+        use: CSSExtract.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
+            }
+          ]
+        })
+      }]
     },
     plugins: [
       CSSExtract,
