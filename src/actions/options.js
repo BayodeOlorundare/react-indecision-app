@@ -66,7 +66,7 @@ export const setOptions = options => ({
 
 export const startSetOptions = () => (dispatch, getState) => {
   const { auth: { uid } } = getState();
-  return databases
+  return database
     .ref(`users/${uid}/options`)
     .once('value')
     .then(snapshot => {
